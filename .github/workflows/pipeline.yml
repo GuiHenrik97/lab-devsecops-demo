@@ -4,6 +4,7 @@ on: [push, pull_request]
 
 permissions:
   contents: read
+  pull-requests: read
 
 jobs:
   build-e-testes:
@@ -34,7 +35,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install semgrep
-      - run: semgrep scan --config p/python --error --metrics=off .
+      - run: semgrep scan --config p/python --config .semgrep/regras.yml --error --metrics=off .
 
   sca-pip-audit:
     runs-on: ubuntu-latest
