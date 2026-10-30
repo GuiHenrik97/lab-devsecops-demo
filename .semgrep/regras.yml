@@ -1,0 +1,6 @@
+rules:
+  - id: sql-injection-concatenacao
+    languages: [python]
+    severity: ERROR
+    message: Consulta SQL montada por concatenacao de texto (risco de SQL injection). Use consulta parametrizada.
+    pattern: $CONN.execute($A + $B)
